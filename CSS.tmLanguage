@@ -29,91 +29,147 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>((@)charset)\b\s*</string>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.control.at-rule.charset.css</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.keyword.css</string>
-				</dict>
-			</dict>
+			<string>(?=@media\b)</string>
 			<key>end</key>
-			<string>\s*(;|(?=\}))</string>
+			<string>(\})\s*</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.terminator.rule.css</string>
+					<string>punctuation.section.property-list.css</string>
 				</dict>
 			</dict>
-			<key>name</key>
-			<string>meta.at-rule.charset.css</string>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>include</key>
-					<string>#string-double</string>
+					<key>begin</key>
+					<string>((@)media)\s*</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.at-rule.media.css</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.keyword.css</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=\{)</string>
+					<key>name</key>
+					<string>meta.at-rule.media.css</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#comment-block</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#media-query-list</string>
+						</dict>
+					</array>
 				</dict>
 				<dict>
-					<key>include</key>
-					<string>#string-single</string>
+					<key>begin</key>
+					<string>(\{)\s*</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.property-list.css</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=\})</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>$self</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>((@)namespace)\b\s*</string>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.control.at-rule.charset.css</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.keyword.css</string>
-				</dict>
-			</dict>
+			<string>(?=@supports\b)</string>
 			<key>end</key>
-			<string>\s*(;|(?=\}))</string>
+			<string>(\})\s*</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.terminator.rule.css</string>
+					<string>punctuation.section.property-list.css</string>
 				</dict>
 			</dict>
-			<key>name</key>
-			<string>meta.at-rule.charset.css</string>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>include</key>
-					<string>#uri</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>[-_a-zA-Z0-9[:^ascii:]]+</string>
+					<key>begin</key>
+					<string>((@)supports)\s*</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.at-rule.supports.css</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.keyword.css</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=\{)</string>
 					<key>name</key>
-					<string>support.variable.namespace.css</string>
+					<string>meta.at-rule.supports.css</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#comment-block</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>\b(?i:and|not|or)\b\s*</string>
+							<key>name</key>
+							<string>keyword.operator.logic.media.css</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#supports-condition</string>
+						</dict>
+					</array>
 				</dict>
 				<dict>
-					<key>include</key>
-					<string>#string-double</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#string-single</string>
+					<key>begin</key>
+					<string>(\{)\s*</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.property-list.css</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=\})</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>$self</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
@@ -134,7 +190,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>\s*(;|(?=\}))</string>
+			<string>(;|(?=\}))</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
@@ -147,6 +203,10 @@
 			<string>meta.at-rule.import.css</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>#uri</string>
@@ -167,241 +227,12 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>((@)font-face\b)\s*</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.control.at-rule.font-face.css</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.keyword.css</string>
-				</dict>
-			</dict>
+			<string>(?=@(-o-|-ms-|-moz-|-webkit-)?keyframes)</string>
 			<key>end</key>
-			<string>\s*(\})</string>
+			<string>(\})\s*</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.section.property-list.css</string>
-				</dict>
-			</dict>
-			<key>name</key>
-			<string>meta.at-rule.font-face.css</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#rule-list</string>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>begin</key>
-			<string>((@)page\b)\s*</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.control.at-rule.page.css</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.keyword.css</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>\s*(\})</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.section.property-list.css</string>
-				</dict>
-			</dict>
-			<key>name</key>
-			<string>meta.at-rule.page.css</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>match</key>
-					<string>(:)(first|left|right)\b</string>
-					<key>name</key>
-					<string>entity.other.at-rule.page.pseudo-class.css</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#rule-list</string>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>begin</key>
-			<string>\s*(?=@media\b)</string>
-			<key>end</key>
-			<string>\s*(\})</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.section.property-list.css</string>
-				</dict>
-			</dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>begin</key>
-					<string>\s*((@)media)\s*</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.control.at-rule.media.css</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.keyword.css</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>\s*(?=\{)</string>
-					<key>name</key>
-					<string>meta.at-rule.media.css</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#media-query-list</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>begin</key>
-					<string>\s*(\{)</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.section.property-list.css</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>(?=\})</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>$self</string>
-						</dict>
-					</array>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>begin</key>
-			<string>\s*(?=@supports\b)</string>
-			<key>end</key>
-			<string>(\})</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.section.property-list.css</string>
-				</dict>
-			</dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>begin</key>
-					<string>\s*((@)supports)\s*</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.control.at-rule.supports.css</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.keyword.css</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>\s*(?=\{)</string>
-					<key>name</key>
-					<string>meta.at-rule.supports.css</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>match</key>
-							<string>\b(?i:and|not|or)\b</string>
-							<key>name</key>
-							<string>keyword.operator.logic.media.css</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#supports-condition</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>begin</key>
-					<string>\s*(\{)</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.section.property-list.css</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>(?=\})</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>$self</string>
-						</dict>
-					</array>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>begin</key>
-			<string>(@)(?=(?:-o-|-ms-|-moz-|-webkit-)?keyframes)</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.control.at-rule.keyframes.css</string>
-				</dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.keyword.css</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>\}</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>0</key>
 				<dict>
 					<key>name</key>
 					<string>punctuation.section.property-list.css</string>
@@ -417,7 +248,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(-ms-keyframes)|((?:-o-|-moz-|-webkit-)?keyframes)</string>
+					<string>((@)-ms-keyframes)|((@)(?:-o-|-moz-|-webkit-)?keyframes)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -428,14 +259,24 @@
 						<key>2</key>
 						<dict>
 							<key>name</key>
+							<string>punctuation.definition.keyword.css</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
 							<string>keyword.control.at-rule.keyframes.css</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.keyword.css</string>
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>\{</string>
+					<string>(\{)\s*</string>
 					<key>endCaptures</key>
 					<dict>
-						<key>0</key>
+						<key>1</key>
 						<dict>
 							<key>name</key>
 							<string>punctuation.section.property-list.css</string>
@@ -445,9 +286,15 @@
 					<array>
 						<dict>
 							<key>match</key>
-							<string>(?&lt;![-_@a-zA-Z0-9[:^ascii:]])[-_a-zA-Z0-9[:^ascii:]]+</string>
+							<string>(?&lt;![@\w-])(?!\d)[\w-]+</string>
 							<key>name</key>
 							<string>support.variable.keyframe-name.css</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>[^\s\w[:^ascii:]-]</string>
+							<key>name</key>
+							<string>invalid.illegal</string>
 						</dict>
 					</array>
 				</dict>
@@ -459,10 +306,10 @@
 					<key>begin</key>
 					<string>(?=\{)</string>
 					<key>end</key>
-					<string>\}</string>
+					<string>(\})\s*</string>
 					<key>endCaptures</key>
 					<dict>
-						<key>0</key>
+						<key>1</key>
 						<dict>
 							<key>name</key>
 							<string>punctuation.section.property-list.css</string>
@@ -480,12 +327,116 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?=\{)</string>
+			<string>((@)(?:font-face|page)\b)\s*</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.at-rule.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.keyword.css</string>
+				</dict>
+			</dict>
 			<key>end</key>
-			<string>\}</string>
+			<string>(\})\s*</string>
 			<key>endCaptures</key>
 			<dict>
-				<key>0</key>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.property-list.css</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.at-rule.font-face.css</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>:(?:first|left|right)\b</string>
+					<key>name</key>
+					<string>entity.other.attribute-name.pseudo-class.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#rule-list</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>Generic simple at-keyword (charset, namespace)</string>
+			<key>begin</key>
+			<string>((@)(?!\d)[\w-]+)\b\s*</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.at-rule.charset.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.keyword.css</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\s*(;|(?=\}))</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.terminator.rule.css</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.at-rule.css</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#uri</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#string-double</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#string-single</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#escape</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?i)(?&lt;![@\w-])((?!\d)[\w-]+)\s*</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>support.variable.namespace.css</string>
+						</dict>
+					</dict>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>(?=\{)</string>
+			<key>end</key>
+			<string>(\})\s*</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>punctuation.section.property-list.css</string>
@@ -508,9 +459,9 @@
 			<array>
 				<dict>
 					<key>comment</key>
-					<string>http://www.w3.org/TR/CSS21/syndata.html#value-def-color</string>
+					<string>CSS Colors Module Level 3 http://www.w3.org/TR/css3-color/</string>
 					<key>match</key>
-					<string>\b(aliceblue|antiquewhite|aqua(marine)?|azure|beige|bisque|black|blanchedalmond|blue(violet)?|brown|burlywood|cadetblue|chartreuse|chocolate|coral|cornflowerblue|cornsilk|crimson|cyan|darkblue|darkcyan|darkgoldenrod|darkgray|darkgreen|darkgrey|darkkhaki|darkmagenta|darkolivegreen|darkorange|darkorchid|darkred|darksalmon|darkseagreen|darkslateblue|darkslategray|darkslategrey|darkturquoise|darkviolet|deeppink|deepskyblue|dimgray|dimgrey|dodgerblue|firebrick|floralwhite|forestgreen|fuchsia|gainsboro|ghostwhite|gold(enrod)?|gray|grey|green(yellow)?|honeydew|hotpink|indianred|indigo|ivory|khaki|lavender(blush)?|lawngreen|lemonchiffon|lightblue|lightcoral|lightcyan|lightgoldenrodyellow|lightgray|lightgreen|lightgrey|lightpink|lightsalmon|lightseagreen|lightskyblue|lightslategray|lightslategrey|lightsteelblue|lightyellow|lime(green)?|linen|magenta|maroon|mediumaquamarine|mediumblue|mediumorchid|mediumpurple|mediumseagreen|mediumslateblue|mediumspringgreen|mediumturquoise|mediumvioletred|midnightblue|mintcream|mistyrose|moccasin|navajowhite|navy|oldlace|olive|olivedrab|orange(red)?|orchid|palegoldenrod|palegreen|paleturquoise|palevioletred|papayawhip|peachpuff|peru|pink|plum|powderblue|purple|red|rosybrown|royalblue|saddlebrown|salmon|sandybrown|seagreen|seashell|sienna|silver|skyblue|slateblue|slategray|slategrey|snow|springgreen|steelblue|tan|teal|thistle|tomato|turquoise|violet|wheat|white(smoke)?|yellow(green)?)\b</string>
+					<string>\b(aliceblue|antiquewhite|aqua(marine)?|azure|beige|bisque|black|blanchedalmond|blue(violet)?|brown|burlywood|cadetblue|chartreuse|chocolate|coral|cornflowerblue|cornsilk|crimson|currentColor|cyan|darkblue|darkcyan|darkgoldenrod|darkgray|darkgreen|darkgrey|darkkhaki|darkmagenta|darkolivegreen|darkorange|darkorchid|darkred|darksalmon|darkseagreen|darkslateblue|darkslategray|darkslategrey|darkturquoise|darkviolet|deeppink|deepskyblue|dimgray|dimgrey|dodgerblue|firebrick|floralwhite|forestgreen|fuchsia|gainsboro|ghostwhite|gold(enrod)?|gray|grey|green(yellow)?|honeydew|hotpink|indianred|indigo|ivory|khaki|lavender(blush)?|lawngreen|lemonchiffon|lightblue|lightcoral|lightcyan|lightgoldenrodyellow|lightgray|lightgreen|lightgrey|lightpink|lightsalmon|lightseagreen|lightskyblue|lightslategray|lightslategrey|lightsteelblue|lightyellow|lime(green)?|linen|magenta|maroon|mediumaquamarine|mediumblue|mediumorchid|mediumpurple|mediumseagreen|mediumslateblue|mediumspringgreen|mediumturquoise|mediumvioletred|midnightblue|mintcream|mistyrose|moccasin|navajowhite|navy|oldlace|olive|olivedrab|orange(red)?|orchid|palegoldenrod|palegreen|paleturquoise|palevioletred|papayawhip|peachpuff|peru|pink|plum|powderblue|purple|red|rosybrown|royalblue|saddlebrown|salmon|sandybrown|seagreen|seashell|sienna|silver|skyblue|slateblue|slategray|slategrey|snow|springgreen|steelblue|tan|teal|thistle|tomato|transparent|turquoise|violet|wheat|white(smoke)?|yellow(green)?)\b</string>
 					<key>name</key>
 					<string>support.constant.color.w3c-standard-color-name.css</string>
 				</dict>
@@ -524,7 +475,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(hsla?|rgba?)(\()</string>
+					<string>(hsla?|rgba?)(\()\s*</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -539,7 +490,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(\))</string>
+					<string>(\))\s*</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
@@ -552,23 +503,42 @@
 					<array>
 						<dict>
 							<key>match</key>
-							<string>(?x)\b
-							    (?:0*(?:(?:1?[0-9]{1,2})|(?:2(?:[0-4][0-9]|5[0-5])))\s*(,)\s*){2}
-							    (?:0*(?:(?:1?[0-9]{1,2})|(?:2(?:[0-4][0-9]|5[0-5])))\b)
-							    (?:\s*(,)\s*(?:(?:0?\.[0-9]+)|[0-1]))?
+							<string>(?x)(?&lt;![.\d])(
+							    (\d{1,2}(\.\d*)?|100(\.0*)?)%
+							    |(0*\.\d+)
+							    |(0*((1?\d{1,2})|(2([0-4]\d|5[0-5]))))(?![.\d])
+							    )
 							</string>
+							<key>name</key>
+							<string>constant.numeric.css</string>
 						</dict>
 						<dict>
 							<key>match</key>
-							<string>\b([0-9]{1,2}|100)\s*%,\s*([0-9]{1,2}|100)\s*%,\s*([0-9]{1,2}|100)\s*%</string>
+							<string>,</string>
 							<key>name</key>
-							<string>constant.other.color.rgb-percentage.css</string>
+							<string>punctuation.separator.key-value.css</string>
 						</dict>
 						<dict>
-							<key>include</key>
-							<string>#numeric-values</string>
+							<key>match</key>
+							<string>[^%,.\d]</string>
+							<key>name</key>
+							<string>invalid.illegal</string>
 						</dict>
 					</array>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(#)(?i:[0-9a-f]{3}|[0-9a-f]{6})\b</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.constant.css</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>constant.other.color.rgb-value.css</string>
 				</dict>
 			</array>
 		</dict>
@@ -576,6 +546,8 @@
 		<dict>
 			<key>begin</key>
 			<string>/\*</string>
+			<key>end</key>
+			<string>\*/</string>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
@@ -584,17 +556,15 @@
 					<string>punctuation.definition.comment.css</string>
 				</dict>
 			</dict>
-			<key>end</key>
-			<string>\*/</string>
 			<key>name</key>
 			<string>comment.block.css</string>
 		</dict>
 		<key>media-query</key>
 		<dict>
 			<key>begin</key>
-			<string>\s*(?![,{;])</string>
+			<string>(?=[\w(])</string>
 			<key>end</key>
-			<string>\s*(?:(,)|(?=[{;]))</string>
+			<string>(?:(,)|(?=[;{]))</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
@@ -605,6 +575,10 @@
 			</dict>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
 				<dict>
 					<key>match</key>
 					<string>\b(?i:and|not|only)\b</string>
@@ -619,7 +593,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>\s*(\()\s*</string>
+					<string>(\()\s*</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -629,10 +603,10 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>\)</string>
+					<string>(\))\s*</string>
 					<key>endCaptures</key>
 					<dict>
-						<key>0</key>
+						<key>1</key>
 						<dict>
 							<key>name</key>
 							<string>punctuation.section.function.css</string>
@@ -641,16 +615,34 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>match</key>
+							<string>\b(?i:and|not|only)\b</string>
+							<key>name</key>
+							<string>keyword.operator.logic.media.css</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>\b(?i:all|aural|braille|embossed|handheld|print|projection|screen|tty|tv)\b</string>
+							<key>name</key>
+							<string>support.constant.media.css</string>
+						</dict>
+						<dict>
 							<key>begin</key>
 							<string>(?x)
 	                            (
 	                                ((min|max)-)?
 	                                (
-	                                    ((device-)?(height|width|aspect-ratio))|
+	                                    ((device-)?(width|height|aspect-ratio))|
 	                                    (color(-index)?)|monochrome|resolution
 	                                )
-	                            )|-webkit-(min-|max-)?device-pixel-ratio
+	                            )|-(o|webkit)-(min-|max-)?device-pixel-ratio
+	                            |(min-|max-)?-moz-device-pixel-ratio
                                 |grid|scan|orientation
+                                |-moz-(
+                                	images-in-menus|mac-graphite-theme|maemo-classic
+                                	|scrollbar-(start|end|thumb)-(forward|backward|proportional)
+                                	|touch-enabled
+                                	|windows-(classic|compositor|(default-)?theme))
                             </string>
 							<key>beginCaptures</key>
 							<dict>
@@ -661,7 +653,7 @@
 								</dict>
 							</dict>
 							<key>end</key>
-							<string>(:)|\s*(?=\))</string>
+							<string>(:)\s*|(?=\))</string>
 							<key>endCaptures</key>
 							<dict>
 								<key>1</key>
@@ -673,13 +665,13 @@
 						</dict>
 						<dict>
 							<key>match</key>
-							<string>\b(portrait|landscape|progressive|interlace)</string>
+							<string>\b(portrait|landscape|progressive|interlace)\b</string>
 							<key>name</key>
 							<string>support.constant.property-value.css</string>
 						</dict>
 						<dict>
 							<key>match</key>
-							<string>\s*(\d+)(/)(\d+)</string>
+							<string>(\d+)(/)(\d+)</string>
 							<key>captures</key>
 							<dict>
 								<key>1</key>
@@ -710,9 +702,9 @@
 		<key>media-query-list</key>
 		<dict>
 			<key>begin</key>
-			<string>\s*(?=[^{;])</string>
+			<string>(?=[\w(])</string>
 			<key>end</key>
-			<string>\s*(?=[{;])</string>
+			<string>(?=[;{])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -724,20 +716,20 @@
 		<key>supports-condition</key>
 		<dict>
 			<key>begin</key>
-			<string>\(</string>
+			<string>(\()\s*</string>
 			<key>beginCaptures</key>
 			<dict>
-				<key>0</key>
+				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>punctuation.section.support-condition.css</string>
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>\)</string>
+			<string>(\))\s*</string>
 			<key>endCaptures</key>
 			<dict>
-				<key>0</key>
+				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>punctuation.section.support-condition.css</string>
@@ -778,6 +770,10 @@
 					<array>
 						<dict>
 							<key>include</key>
+							<string>#comment-block</string>
+						</dict>
+						<dict>
+							<key>include</key>
 							<string>#property-values</string>
 						</dict>
 					</array>
@@ -793,20 +789,11 @@
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.constant.css</string>
-						</dict>
-					</dict>
 					<key>match</key>
-					<string>(#)([0-9a-fA-F]{3}|[0-9a-fA-F]{6})\b</string>
-					<key>name</key>
-					<string>constant.other.color.rgb-value.css</string>
-				</dict>
-				<dict>
+					<string>(?x)
+					    (?:-|\+)?(?:\d*\.\d+|\d+)
+					    ((?:px|pt|ch|cm|mm|in|r?em|ex|pc|deg|g?rad|dp(?:i|cm|px)|m?s|turn|vw|vh|vmin|vmax|k?Hz)\b|%)?
+					</string>
 					<key>captures</key>
 					<dict>
 						<key>1</key>
@@ -815,11 +802,6 @@
 							<string>keyword.other.unit.css</string>
 						</dict>
 					</dict>
-					<key>match</key>
-					<string>(?x)
-					    (?:-|\+)?(?:\d*\.\d+|\d+)
-					    ((?:px|pt|ch|cm|mm|in|r?em|ex|pc|deg|g?rad|dp(?:i|cm|px)|m?s|turn|vw|vh|vmin|vmax|k?Hz)\b|%)?
-					</string>
 					<key>name</key>
 					<string>constant.numeric.css</string>
 				</dict>
@@ -828,9 +810,9 @@
 		<key>property-name</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;![-a-zA-Z0-9[:^ascii:]])(?=[-a-zA-Z[:^ascii:]])</string>
+			<string>(?i)(?&lt;![-\w])(?!\d)(?=[-\w])</string>
 			<key>end</key>
-			<string>$|(?![-a-zA-Z0-9[:^ascii:]])</string>
+			<string>(?i)$|(?![-\w])</string>
 			<key>name</key>
 			<string>meta.property-name.css</string>
 			<key>patterns</key>
@@ -849,7 +831,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>\b(absolute|all(-scroll)?|alias|all-scroll|alternate|always|armenian|auto|avoid(?:-page|-column|-region)?|backwards|balance|baseline|below|bidi-override|block|bold|bolder|both|bottom|(margin|padding|border|content)-box|break-(?:after|before|inside|all|word)|capitalize|center|char|cell|circle|cjk-ideographic|clip|clone|col-resize|context-menu|copy|collapse|column(?:-reverse)?|crosshair|currentColor|dashed|decimal-leading-zero|decimal|default|disabled|disc|distribute-all-lines|distribute-letter|distribute-space|distribute|dotted|double|ease(?:-in-out|-in|-out)?|ew?-resize|ellipsis|fill|fixed|flat|flex(?:-start|-end)?|floating|forwards|from-image|fullscreen|geometricPrecision|georgian|groove|hand|hebrew|help|hidden|hiragana-iroha|hiragana|horizontal|ideograph-alpha|ideograph-numeric|ideograph-parenthesis|ideograph-space|inactive|inherit|initial|inline-block|inline|inset|inside|inter-ideograph|inter-word|italic|justify|katakana-iroha|katakana|keep-all|larger|left|lighter|linear|line(?:-edge|-through)|list-item|loose|lower-alpha|lower-greek|lower-latin|lower-roman|lowercase|lr-tb|ltr|marquee-(?:block|line)|maximized|medium|middle|minimized|move|n-resize|n[ew]?s?[ew]?-resize|newspaper|no-drop|no-repeat|none|normal|not-allowed|nowrap|oblique|optimize(Legibility|Quality|Speed)|outset|outside|overline|page|painted|pointer|preserve-3d|pre(-(wrap|line))?|progress|recto|region|relative|repeat-x|repeat-y|repeat|space(?:-between|-around)?|round|right|ridge|row-resize|rtl|s-resize|scale-down|scroll|s[ew]-resize|separate|slice|slide|small-caps|smaller|snap|solid|square|static|step-(?:start|end)|stretch|strict|stroke|sub|super|table-(header|footer|row)-group|table-(caption|row|cell)|table|tb-rl|text-bottom|text-top|text|thick|thin|top|transparent|underline|upper-alpha|upper-latin|upper-roman|uppercase|verso|vertical(-(ideographic|text))?|visible(Painted|Fill|Stroke)?|w-resize|wait|whitespace|windowed|wrap(?:-reverse)?|((xx?-)?(small|large))|zero|zoom-(?:in|out))\b</string>
+					<string>(?&lt;![-\w])(absolute|all(-scroll)?|alias|all-scroll|alternate|always|armenian|auto|avoid(?:-page|-column|-region)?|backwards|balance|baseline|below|bidi-override|block|bold|bolder|both|bottom|(margin|padding|border|content)-box|break-(?:after|before|inside|all|word)|capitalize|center|char|cell|circle|cjk-ideographic|clip|clone|col-resize|context-menu|copy|collapse|column(?:-reverse)?|crosshair|currentColor|dashed|decimal-leading-zero|decimal|default|disabled|disc|distribute-all-lines|distribute-letter|distribute-space|distribute|dotted|double|ease(?:-in-out|-in|-out)?|ew?-resize|ellipsis|fill|fixed|flat|flex(?:-start|-end)?|floating|forwards|from-image|fullscreen|geometricPrecision|georgian|groove|hand|hebrew|help|hidden|hiragana-iroha|hiragana|horizontal|ideograph-alpha|ideograph-numeric|ideograph-parenthesis|ideograph-space|inactive|inherit|initial|inline-block|inline|inset|inside|inter-ideograph|inter-word|italic|justify|katakana-iroha|katakana|keep-all|larger|left|lighter|linear|line(?:-edge|-through)|list-item|loose|lower-alpha|lower-greek|lower-latin|lower-roman|lowercase|lr-tb|ltr|marquee-(?:block|line)|maximized|medium|middle|minimized|move|n-resize|n[ew]?s?[ew]?-resize|newspaper|no-drop|no-repeat|none|normal|not-allowed|nowrap|oblique|optimize(Legibility|Quality|Speed)|outset|outside|overline|page|painted|pointer|preserve-3d|pre(-(wrap|line))?|progress|recto|region|relative|repeat-x|repeat-y|repeat|space(?:-between|-around)?|round|right|ridge|row-resize|rtl|s-resize|scale-down|scroll|s[ew]-resize|separate|slice|slide|small-caps|smaller|snap|solid|square|static|step-(?:start|end)|stretch|strict|stroke|sub|super|table-(header|footer|row)-group|table-(caption|row|cell)|table|tb-rl|text-bottom|text-top|text|thick|thin|top|transparent|underline|upper-alpha|upper-latin|upper-roman|uppercase|verso|vertical(-(ideographic|text))?|visible(Painted|Fill|Stroke)?|w-resize|wait|whitespace|windowed|wrap(?:-reverse)?|((xx?-)?(small|large))|zero|zoom-(?:in|out))(?![-\w])</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
@@ -881,7 +863,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(format|local|attr|counter|counters|cubic-bezier|(?:-moz-|-webkit-)?calc|image|local|matrix|min|max|(?:-o-|-moz-|-webkit-)?(?:(?:repeating-)?linear-|radial-)gradient|rect|rotate|scale[XY]?|skew[XY]?|toggle|translate[XY]?)(\()</string>
+					<string>(?&lt;![-\w])(format|local|attr|counter|counters|cubic-bezier|(?:-moz-|-webkit-)?calc|image|local|matrix|min|max|(?:-o-|-moz-|-webkit-)?(?:(?:repeating-)?linear-|radial-)gradient|rect|rotate|scale[XY]?|skew[XY]?|toggle|translate[XY]?)(\()</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -929,6 +911,12 @@
 						</dict>
 						<dict>
 							<key>match</key>
+							<string>\bauto\b</string>
+							<key>name</key>
+							<string>keyword.other.auto.css</string>
+						</dict>
+						<dict>
+							<key>match</key>
 							<string>(,)\s*</string>
 							<key>captures</key>
 							<dict>
@@ -944,6 +932,12 @@
 				<dict>
 					<key>include</key>
 					<string>#uri</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;=^|[\s:])(?![\d-])[\w-]+(?![\w-])</string>
+					<key>name</key>
+					<string>support.variable.property-value.css</string>
 				</dict>
 				<dict>
 					<key>match</key>
@@ -968,17 +962,17 @@
 		<key>rule-list</key>
 		<dict>
 			<key>begin</key>
-			<string>\{</string>
+			<string>(\{)\s*</string>
 			<key>beginCaptures</key>
 			<dict>
-				<key>0</key>
+				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>punctuation.section.property-list.css</string>
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>\s*(?=\})</string>
+			<string>(?=\})</string>
 			<key>name</key>
 			<string>meta.property-list.css</string>
 			<key>patterns</key>
@@ -1003,7 +997,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>\s*(;|(?=\}))</string>
+					<string>(;|(?=\}))</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
@@ -1016,6 +1010,10 @@
 					<string>meta.property-value.css</string>
 					<key>patterns</key>
 					<array>
+						<dict>
+							<key>include</key>
+							<string>#comment-block</string>
+						</dict>
 						<dict>
 							<key>include</key>
 							<string>#property-values</string>
@@ -1057,7 +1055,7 @@
 		<key>selector</key>
 		<dict>
 			<key>begin</key>
-			<string>\s*(?=[:.*#a-zA-Z[:^ascii:]_-]|\\(?:[^\n\r\f0-9a-f]|[0-9a-f]{1,6}\s?))</string>
+			<string>\s*(?!\d)(?=[:.*#\w-]|\\(?i:[^\n\r\f0-9a-f]|[0-9a-f]{1,6}\s?))</string>
 			<key>end</key>
 			<string>(?=[/@{)])</string>
 			<key>name</key>
@@ -1066,7 +1064,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>\b(a|abbr|acronym|address|area|article|aside|audio|b|base|big|blockquote|body|br|button|canvas|caption|cite|code|col|colgroup|datalist`|dd|del|details|dfn|dialog|div|dl|dt|em|eventsource|fieldset|figure|figcaption|footer|form|frame|frameset|(h[1-6])|head|header|hgroup|hr|html|i|iframe|img|input|ins|kbd|label|legend|li|link|map|mark|menu|meta|meter|nav|noframes|noscript|object|ol|optgroup|option|output|p|param|pre|progress|q|samp|script|section|select|small|span|strike|strong|style|sub|summary|sup|table|tbody|td|textarea|tfoot|th|thead|time|title|tr|tt|ul|var|video)\b</string>
+					<string>\b(a|abbr|acronym|address|area|article|aside|audio|b|base|big|blockquote|body|br|button|canvas|caption|cite|code|col|colgroup|datalist|dd|del|details|dfn|dialog|div|dl|dt|em|eventsource|fieldset|figure|figcaption|footer|form|frame|frameset|(h[1-6])|head|header|hgroup|hr|html|i|iframe|img|input|ins|kbd|label|legend|li|link|map|mark|menu|meta|meter|nav|noframes|noscript|object|ol|optgroup|option|output|p|param|pre|progress|q|samp|script|section|select|small|span|strike|strong|style|sub|summary|sup|table|tbody|td|textarea|tfoot|th|thead|time|title|tr|tt|ul|var|video)\b</string>
 					<key>name</key>
 					<string>entity.name.tag.css</string>
 				</dict>
@@ -1080,7 +1078,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(\.)[a-zA-Z0-9[:^ascii:]_-]+</string>
+					<string>(\.)(?!\d)[\w-]+</string>
 					<key>name</key>
 					<string>entity.other.attribute-name.class.css</string>
 				</dict>
@@ -1094,7 +1092,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(#)[a-zA-Z[:^ascii:]][a-zA-Z0-9[:^ascii:]_-]*</string>
+					<string>(#)(?!\d)[\w-]+</string>
 					<key>name</key>
 					<string>entity.other.attribute-name.id.css</string>
 				</dict>
@@ -1114,7 +1112,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(:+)(after|before|first-letter|first-line|selection)\b</string>
+					<string>(::?)(after|before|first-letter|first-line|selection)\b</string>
 					<key>name</key>
 					<string>entity.other.attribute-name.pseudo-element.css</string>
 				</dict>
@@ -1401,7 +1399,7 @@
 		<key>escape</key>
 		<dict>
 			<key>match</key>
-			<string>\\([^\n\r\f0-9a-f]|[0-9a-f]{1,6}\s?)</string>
+			<string>\\(?i:[^\n\r\f0-9a-f]|[0-9a-f]{1,6}\s?)</string>
 			<key>name</key>
 			<string>constant.character.escape.css</string>
 		</dict>
