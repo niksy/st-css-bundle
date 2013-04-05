@@ -1112,7 +1112,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>(::?)(after|before|first-letter|first-line|(?:-moz-)?selection)\b</string>
+					<string>(::?)(after|before|first-letter|first-line|(?:-moz-)?selection|(?:-(?:webkit-input|moz|ms-input)-)?placeholder)\b</string>
 					<key>name</key>
 					<string>entity.other.attribute-name.pseudo-element.css</string>
 				</dict>
