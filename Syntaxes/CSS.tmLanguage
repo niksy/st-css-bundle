@@ -327,7 +327,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>((@)(?:font-face|page)\b)\s*</string>
+			<string>((@)(?:font-face|page|(?:-(?:webkit|moz|ms|o)-)?viewport)\b)\s*</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
