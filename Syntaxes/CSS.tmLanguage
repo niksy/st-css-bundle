@@ -68,10 +68,6 @@
 							<key>include</key>
 							<string>#comment-block</string>
 						</dict>
-						<dict>
-							<key>include</key>
-							<string>#media-query-list</string>
-						</dict>
 					</array>
 				</dict>
 				<dict>
@@ -138,16 +134,6 @@
 							<key>include</key>
 							<string>#comment-block</string>
 						</dict>
-						<dict>
-							<key>match</key>
-							<string>\b(?i:and|not|or)\b\s*</string>
-							<key>name</key>
-							<string>keyword.operator.logic.media.css</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#supports-condition</string>
-						</dict>
 					</array>
 				</dict>
 				<dict>
@@ -206,22 +192,6 @@
 				<dict>
 					<key>include</key>
 					<string>#comment-block</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#uri</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#string-double</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#string-single</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#media-query-list</string>
 				</dict>
 			</array>
 		</dict>
