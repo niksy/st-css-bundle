@@ -1403,6 +1403,20 @@
 			<key>name</key>
 			<string>constant.character.escape.css</string>
 		</dict>
+		<key>constant_rgb</key>
+		<dict>
+			<key>match</key>
+			<string>(\b0*((1?[0-9]{1,2})|(2([0-4][0-9]|5[0-5])))\s*,\s*)(0*((1?[0-9]{1,2})|(2([0-4][0-9]|5[0-5])))\s*,\s*)(0*((1?[0-9]{1,2})|(2([0-4][0-9]|5[0-5])))\b)</string>
+			<key>name</key>
+			<string>constant.other.color.rgb-value.css</string>
+		</dict>
+		<key>constant_rgb_percentage</key>
+		<dict>
+			<key>match</key>
+			<string>\b([0-9]{1,2}|100)\s*%,\s*([0-9]{1,2}|100)\s*%,\s*([0-9]{1,2}|100)\s*%</string>
+			<key>name</key>
+			<string>constant.other.color.rgb-percentage.css</string>
+		</dict>
 	</dict>
 	<key>scopeName</key>
 	<string>source.css</string>
