@@ -1,3 +1,6 @@
-# CSS bundle for Sublime Text 2
+# CSS bundle for Sublime Text
 
-CSS bundle—syntax, snippets and preferences—for Sublime Text 2.
+Based on original CSS bundle and contributions from:
+
+* https://github.com/GreLI/CSS-tmLanguage
+* https://github.com/MarioRicalde/SCSS.tmbundle
