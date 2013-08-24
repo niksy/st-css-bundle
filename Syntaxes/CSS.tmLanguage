@@ -502,13 +502,16 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>include</key>
+							<string>#constant_rgb</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#constant_rgb_percentage</string>
+						</dict>
+						<dict>
 							<key>match</key>
-							<string>(?x)(?&lt;![.\d])(
-							    (\d{1,2}(\.\d*)?|100(\.0*)?)%
-							    |(0*\.\d+)
-							    |(0*((1?\d{1,2})|(2([0-4]\d|5[0-5]))))(?![.\d])
-							    )
-							</string>
+							<string>[\+|\-]?(\s*)?([0-9]+(\.[0-9]+)?|\.[0-9]+)</string>
 							<key>name</key>
 							<string>constant.numeric.css</string>
 						</dict>
@@ -516,7 +519,7 @@
 							<key>match</key>
 							<string>,</string>
 							<key>name</key>
-							<string>punctuation.separator.key-value.css</string>
+							<string>punctuation.separator.parameters.css</string>
 						</dict>
 						<dict>
 							<key>match</key>
