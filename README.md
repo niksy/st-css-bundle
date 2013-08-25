@@ -1,6 +1,7 @@
 # CSS bundle for Sublime Text
 
-Based on original CSS bundle and contributions from:
+Based on [improved CSS bundle by GreLI](https://github.com/GreLI/CSS-tmLanguage). Tries to have one-on-one feature parity as [SCSS bundle](https://github.com/niksy/st-scss-bundle).
 
-* https://github.com/GreLI/CSS-tmLanguage
-* https://github.com/MarioRicalde/SCSS.tmbundle
+## Contributions
+
+* [Feature additions from SCSS bundle, by Mario Ricalde](https://github.com/MarioRicalde/SCSS.tmbundle)
