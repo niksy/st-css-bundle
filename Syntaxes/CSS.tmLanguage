@@ -956,6 +956,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#tag-wildcard</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#property-name</string>
 				</dict>
 				<dict>
@@ -1070,10 +1074,8 @@
 					<string>entity.other.attribute-name.id.css</string>
 				</dict>
 				<dict>
-					<key>match</key>
-					<string>\*</string>
-					<key>name</key>
-					<string>entity.name.tag.wildcard.css</string>
+					<key>include</key>
+					<string>#tag-wildcard</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -1368,6 +1370,13 @@
 					<string>#escape</string>
 				</dict>
 			</array>
+		</dict>
+		<key>tag-wildcard</key>
+		<dict>
+			<key>match</key>
+			<string>\*</string>
+			<key>name</key>
+			<string>entity.name.tag.wildcard.css</string>
 		</dict>
 		<key>escape</key>
 		<dict>
