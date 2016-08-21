@@ -1212,6 +1212,20 @@
 							<key>name</key>
 							<string>punctuation.definition.entity.css</string>
 						</dict>
+					</dict>
+					<key>match</key>
+					<string>(:)(enter)\b</string>
+					<key>name</key>
+					<string>entity.other.attribute-name.custom-pseudo-class.css</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.entity.css</string>
+						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
