@@ -798,6 +798,43 @@
 				</dict>
 			</array>
 		</dict>
+		<key>property-values-css-modules</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#escape</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>("|')</string>
+					<key>end</key>
+					<string>("|')</string>
+					<key>name</key>
+					<string>meta.import.css-modules.css</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#escape</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?!\d)[\w-]+</string>
+					<key>name</key>
+					<string>entity.other.attribute-name.class.css</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\s*(from)\s*</string>
+					<key>name</key>
+					<string>entity.name.tag.css</string>
+				</dict>
+			</array>
+		</dict>
 		<key>property-values</key>
 		<dict>
 			<key>patterns</key>
@@ -964,6 +1001,41 @@
 				</dict>
 				<dict>
 					<key>begin</key>
+					<string>(?&lt;=composes)\s*(:)\s*</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.separator.key-value.css</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(;|(?=\}))</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.terminator.rule.css</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.property-value.css-modules.css</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#comment-block</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#property-values-css-modules</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
 					<string>(:)\s*</string>
 					<key>beginCaptures</key>
 					<dict>
@@ -1104,6 +1176,20 @@
 					<string>(:)((first|last)-child|(first|last|only)-of-type|empty|root|target|first|left|right)\b</string>
 					<key>name</key>
 					<string>entity.other.attribute-name.pseudo-class.css</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.entity.css</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(:)(local|global)\b</string>
+					<key>name</key>
+					<string>entity.other.attribute-name.pseudo-class.css-modules.css</string>
 				</dict>
 				<dict>
 					<key>captures</key>
